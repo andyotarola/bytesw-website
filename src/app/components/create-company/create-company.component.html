@@ -1,0 +1,66 @@
+<form class="company-form" [formGroup]="createCompanyForm" (ngSubmit)="onSave()">
+
+
+    <div class="company-form__item">
+        <h2>Add new company</h2>
+    </div>
+
+    <div class="company-form__item">
+
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Name</mat-label>
+            <input matInput name="name" formControlName="name">
+            <mat-error *ngIf="createCompanyForm.controls.name.hasError('required')">
+                The name is required.
+            </mat-error>
+        </mat-form-field>
+
+    </div>
+
+    <div class="company-form__item">
+
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address" name="address">
+            <mat-error *ngIf="createCompanyForm.controls.address.hasError('required')">
+                The address is required.
+            </mat-error>
+        </mat-form-field>
+
+    </div>
+
+    <div class="company-form__item">
+
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Foundation date</mat-label>
+            <input matInput type="date" name="foundation_date" formControlName="foundation_date">
+            <mat-error *ngIf="createCompanyForm.controls.foundation_date.hasError('required')">
+                The Foundation date is required.
+            </mat-error>
+        </mat-form-field>
+
+    </div>
+
+    <div class="company-form__item">
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>NIT</mat-label>
+            <input matInput name="nit" formControlName="nit">
+            <mat-error *ngIf="createCompanyForm.controls.nit.hasError('required')">
+                The NIT is required.
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="company-form__item d-flex justify-content-end">
+
+        <button mat-button color="primary">
+            Save 
+        </button>
+
+        <button mat-button type="button" mat-dialog-close>
+            Cancel
+        </button>
+
+    </div>
+
+</form>

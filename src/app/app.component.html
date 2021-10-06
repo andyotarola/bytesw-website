@@ -1,0 +1,73 @@
+<div class="container">
+
+  <div class="row">
+
+      <div class="col-12">
+        <h1>Manage company</h1>
+      </div>
+
+  </div>
+
+  <div class="row">    
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="companies.length > 0; else emptyCompanies">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="addres">
+        <th mat-header-cell *matHeaderCellDef> Addres </th>
+        <td mat-cell *matCellDef="let element"> {{element.addres}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="foundation_date">
+        <th mat-header-cell *matHeaderCellDef> Foundation Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.foundation_date}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nit">
+        <th mat-header-cell *matHeaderCellDef> Nit </th>
+        <td mat-cell *matCellDef="let element"> {{element.nit}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>   
+        <td mat-cell *matCellDef="let element"> 
+          <button mat-icon-button (click)="openDialogEditCompany(element)">
+            <mat-icon>edit</mat-icon> 
+          </button> 
+          <button mat-icon-button (click)="deleteCompany(element.id)">
+            <mat-icon>delete</mat-icon> 
+          </button> 
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons 
+                 aria-label="Select page of periodic elements">
+    </mat-paginator>
+
+    <ng-template #emptyCompanies>
+
+      <p>There are no registered companies</p>
+
+    </ng-template>
+
+    <button mat-button (click)="openDialogCreateCompany()">
+      Add Company
+    </button>
+
+  </div>
+
+</div>
